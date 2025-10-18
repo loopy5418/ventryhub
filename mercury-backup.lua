@@ -580,6 +580,9 @@ function Library:create(options)
 	end)
 
 	local function closeUI()
+		if getgenv and getgenv().closeReady then
+            getgenv().closeReady()
+        end
 		core.ClipsDescendants = true
 		core:fade(true)
 		wait(0.1)
